@@ -50,11 +50,32 @@
             cursor: pointer;
         }
         .register-form { display: none; }
+        .db-status {
+            background: #e7f5fe;
+            color: #0366d6;
+            padding: 8px;
+            text-align: center;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
 
 <div class="container">
+    <!-- Status Koneksi Database -->
+    <div class="db-status">
+        <?php
+        $con = new mysqli('mysql', 'root', '123456', 'mysql');
+        if ($con->connect_error) {
+            echo "Database belum terhubung: " . $con->connect_error;
+        } else {
+            echo "Database: Connected sukses!";
+        }
+        ?>
+    </div>
+
     <!-- Form Login -->
     <div id="loginSection" class="login-form">
         <h2>Login</h2>
